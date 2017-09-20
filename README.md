@@ -3,6 +3,4 @@ ProjectInterface is a school project. In this project we make us of the teensy3.
 
 Created by:
 - Tim Bunk
-  ********
 - Mike de Groot.
-  *************
