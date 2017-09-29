@@ -148,6 +148,11 @@ uint8_t teapotPacket[14] = { '$', 0x02, 0,0, 0,0, 0,0, 0,0, 0x00, 0x00, '\r', '\
 
 
 
+int buttonPin = 14;
+int buttonState = 0;
+
+
+
 // ================================================================
 // ===               INTERRUPT DETECTION ROUTINE                ===
 // ================================================================
@@ -241,6 +246,9 @@ void setup() {
 
     // configure LED for output
     pinMode(LED_PIN, OUTPUT);
+
+    // configure BUTTON for output
+    pinMode(buttonPin, INPUT);
 }
 
 
@@ -328,7 +336,10 @@ void loop() {
             Serial.print(",");
             Serial.print(ypr[1] * 180/M_PI);
             Serial.print(",");
-            Serial.println(ypr[2] * 180/M_PI);
+            Serial.print(ypr[2] * 180/M_PI);
+            Serial.print(",");
+            buttonState = digitalRead(buttonPin);
+            Serial.println(buttonState);
         #endif
 
         #ifdef OUTPUT_READABLE_REALACCEL
