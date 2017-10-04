@@ -1,3 +1,4 @@
+#include <Encoder.h>
 // I2C device class (I2Cdev) demonstration Arduino sketch for MPU6050 class using DMP (MotionApps v2.0)
 // 6/21/2012 by Jeff Rowberg <jeff@rowberg.net>
 // Updates should (hopefully) always be available at https://github.com/jrowberg/i2cdevlib
@@ -150,7 +151,7 @@ uint8_t teapotPacket[14] = { '$', 0x02, 0,0, 0,0, 0,0, 0,0, 0x00, 0x00, '\r', '\
 
 int buttonPin = 14;
 int buttonState = 0;
-
+Encoder encoder(16,17);
 
 
 // ================================================================
@@ -339,7 +340,16 @@ void loop() {
             Serial.print(ypr[2] * 180/M_PI);
             Serial.print(",");
             buttonState = digitalRead(buttonPin);
-            Serial.println(buttonState);
+            Serial.print(buttonState);
+            // Get the data from the rotary encoder
+            Serial.print(",");
+            long newRot;
+            Serial.println(encoder.read());
+            /*newRot = encoder.read();
+            if (newRot != rotation) {
+              Serial.println(newRot);
+              rotation = newRot;
+            }*/
         #endif
 
         #ifdef OUTPUT_READABLE_REALACCEL
