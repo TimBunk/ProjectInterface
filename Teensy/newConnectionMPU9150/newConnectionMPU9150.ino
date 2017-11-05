@@ -343,10 +343,24 @@ void loop() {
             Serial.print(",");
             // Get the data from buttonLeft
             buttonStateLeft = digitalRead(buttonLeft);
+            if (buttonStateLeft == 1) {
+              buttonStateLeft = 0;
+            }
+
+            else {
+              buttonStateLeft = 1;
+            }
             Serial.print(buttonStateLeft);
             Serial.print(",");
             // Get the data from buttonRight
             buttonStateRight = digitalRead(buttonRight);
+            if (buttonStateRight == 1) {
+              buttonStateRight = 0;
+            }
+
+            else {
+              buttonStateRight = 1;
+            }
             Serial.println(buttonStateRight);
             
         #endif
